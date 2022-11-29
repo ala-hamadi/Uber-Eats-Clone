@@ -21,8 +21,9 @@ export default function Home() {
         <HeaderTabs />
         <SearchBar />
       </View>
+      <Categories />
+
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Categories />
         <RestaurantItems />
       </ScrollView>
       <View style={{ backgroundColor: "white" }}>
