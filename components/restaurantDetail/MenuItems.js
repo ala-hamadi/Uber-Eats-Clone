@@ -64,7 +64,6 @@ export default function MenuItems() {
               }}
               innerIconStyle={{ backgroundColor: "#eee" }}
               fillColor='#eee'
-              unfillColor='red'
             />
             <FoodInfo food={food} />
             <FoodImage food={food} />
