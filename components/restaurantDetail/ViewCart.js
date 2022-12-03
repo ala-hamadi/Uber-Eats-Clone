@@ -2,7 +2,7 @@ import { View, Text, Modal, TouchableOpacity, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import OrderItem from "./OrderItem";
 
-export default function ViewCart() {
+export default function ViewCart({ navigation }) {
   const styles = StyleSheet.create({
     modalContainer: {
       flex: 1,
@@ -72,7 +72,10 @@ export default function ViewCart() {
                 width: 300,
                 position: "relative",
               }}
-              onPress={() => setModalVisible(false)}
+              onPress={() => {
+                setModalVisible(false);
+                navigation.navigate("OrderCompleted");
+              }}
             >
               <Text style={{ color: "white", fontSize: 20 }}>Checkout</Text>
               <Text

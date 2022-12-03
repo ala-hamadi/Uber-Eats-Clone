@@ -52,21 +52,24 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 });
-export default function MenuItems() {
+export default function MenuItems({ hideCheckbox, marginLeft }) {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       {foods.map((food, index) => (
         <View key={index}>
           <View style={styles.menuItemStyle}>
-            <BouncyCheckbox
-              iconStyle={{
-                backgroundColor: "#eee",
-              }}
-              innerIconStyle={{ backgroundColor: "#eee" }}
-              fillColor='#eee'
-            />
+            {!hideCheckbox && (
+              <BouncyCheckbox
+                iconStyle={{
+                  backgroundColor: "#eee",
+                }}
+                innerIconStyle={{ backgroundColor: "#eee" }}
+                fillColor='#eee'
+              />
+            )}
+
             <FoodInfo food={food} />
-            <FoodImage food={food} />
+            <FoodImage food={food} marginLeft={marginLeft ? marginLeft : 0} />
           </View>
           <Divider
             width={0.5}
@@ -95,6 +98,7 @@ const FoodImage = ({ marginLeft, ...props }) => (
         width: 100,
         height: 100,
         borderRadius: 8,
+        marginLeft: marginLeft,
       }}
     />
   </View>
