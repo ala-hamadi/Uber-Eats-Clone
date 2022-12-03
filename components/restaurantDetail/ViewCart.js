@@ -1,8 +1,11 @@
 import { View, Text, Modal, TouchableOpacity, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import OrderItem from "./OrderItem";
+import LottieView from "lottie-react-native";
 
 export default function ViewCart({ navigation }) {
+  const [loading, setLoading] = useState(false);
+
   const styles = StyleSheet.create({
     modalContainer: {
       flex: 1,
@@ -73,8 +76,12 @@ export default function ViewCart({ navigation }) {
                 position: "relative",
               }}
               onPress={() => {
+                setLoading(true);
                 setModalVisible(false);
-                navigation.navigate("OrderCompleted");
+                setTimeout(() => {
+                  navigation.navigate("OrderCompleted");
+                  setLoading(false);
+                }, 2500);
               }}
             >
               <Text style={{ color: "white", fontSize: 20 }}>Checkout</Text>
@@ -150,6 +157,28 @@ export default function ViewCart({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
+      {loading ? (
+        <View
+          style={{
+            backgroundColor: "black",
+            position: "absolute",
+            opacity: 0.6,
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+            width: "100%",
+          }}
+        >
+          <LottieView
+            style={{ height: 200 }}
+            source={require("../../assets/animations/scanner.json")}
+            autoPlay
+            speed={3}
+          />
+        </View>
+      ) : (
+        <></>
+      )}
     </>
   );
 }
