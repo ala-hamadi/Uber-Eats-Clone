@@ -8,7 +8,7 @@ import HeaderTabs from "../components/HeaderTabs";
 import RestaurantItems from "../components/RestaurantItems";
 import SearchBar from "../components/SearchBar";
 
-export default function Home() {
+export default function Home({ navigation }) {
   return (
     <SafeAreaView
       style={{
@@ -22,9 +22,8 @@ export default function Home() {
         <SearchBar />
       </View>
       <Categories />
-
       <ScrollView showsVerticalScrollIndicator={false}>
-        <RestaurantItems />
+        <RestaurantItems navigation={navigation} />
       </ScrollView>
       <View style={{ backgroundColor: "white" }}>
         <Divider width={1} />
